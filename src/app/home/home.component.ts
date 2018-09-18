@@ -2,13 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
 
 import { User } from '../_models';
+
 import { UserService } from '../_services';
 
 @Component({templateUrl: 'home.component.html'})
 export class HomeComponent implements OnInit {
-    currentUser: User;
+    currentUser: User
+    selectedUser: User;
     users: User[] = [];
 
+    
     constructor(private userService: UserService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
@@ -16,11 +19,15 @@ export class HomeComponent implements OnInit {
     ngOnInit() {
         this.loadAllUsers();
     }
+    
+    onSelect(user: User): void {
+    this.selectedUser = user;
+  }
 
     deleteUser(id: number) {
         this.userService.delete(id).pipe(first()).subscribe(() => { 
             this.loadAllUsers() 
-        });
+        }); this.selectedUser = this.currentUser;
     }
 
     private loadAllUsers() {

@@ -17,6 +17,9 @@ import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { WeekpicksComponent } from './_reports/weekpicks/weekpicks.component';
+import { AdminComponent } from './admin/admin.component';
+
 
 @NgModule({
     imports: [
@@ -31,7 +34,9 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
         HomeComponent,
         LoginComponent,
         RegisterComponent,
-        UserDetailComponent
+        UserDetailComponent,
+        WeekpicksComponent,
+        AdminComponent
     ],
     providers: [
         AuthGuard,

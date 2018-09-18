@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-
 import { UserService } from '../_services/index';
 
 describe('UserService', () => {

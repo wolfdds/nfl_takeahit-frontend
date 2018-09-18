@@ -5,5 +5,7 @@ export class User {
     firstName: string;
     lastName: string;
     alias: string;
+    email: string;
     isadmin: boolean;
 }
+

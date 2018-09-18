@@ -1,3 +1,13 @@
 <p>
   user-detail works!
+
 </p>
+
+<div *ngIf="selectedUser">
+
+  <h2>{{selectedUser.username | uppercase}} Details</h2>
+  <div><span>id: </span>{{User.id}}<br>
+  {{selectedUser.firstName}} {{selectedUser.lastName}}
+  </div>
+  
+</div>
