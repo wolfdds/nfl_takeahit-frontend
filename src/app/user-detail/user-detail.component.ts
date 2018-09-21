@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 import { User } from '../_models';
+import { UserService } from '../_services';
 
 
 
@@ -12,11 +14,20 @@ import { User } from '../_models';
 })
 export class UserDetailComponent implements OnInit {
   
-  @Input() selectedUser: User
+  @Input() user: User;
   
-constructor() { }
-
-  ngOnInit() {
+  constructor(
+    private route: ActivatedRoute, 
+    private userService: UserService
+  ) { 
+     this.route.params.subscribe(params => this.user = params.id);
   }
 
+ ngOnInit() {
+   const id = +this.route.snapshot.paramMap.get('id');
+   this.userService.getById(id).subscribe(user => this.user = user);
+  }
+
+  
 }
+    

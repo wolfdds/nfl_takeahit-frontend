@@ -1,18 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
 
 import { User } from '../_models';
-
 import { UserService } from '../_services';
 
 @Component({templateUrl: 'home.component.html'})
 export class HomeComponent implements OnInit {
-    currentUser: User
+    currentUser: User;
     selectedUser: User;
     users: User[] = [];
 
     
-    constructor(private userService: UserService) {
+    constructor(
+        private userService: UserService,
+        private route: ActivatedRoute,
+        private router: Router) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 

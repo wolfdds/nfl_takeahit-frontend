@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 import { User } from '../_models';
 
@@ -12,7 +13,7 @@ export class UserService {
     }
 
     getById(id: number) {
-        return this.http.get(`/users/` + id);
+        return this.http.get<User>(`/users/` + id);
     }
 
     register(user: User) {
